@@ -151,6 +151,18 @@ ggplotly(g1) |> plotly::style(hoverlabel = list(align = "left"))
 ## Maine
 ## Maryland
 ## Massachusetts
+```{r doplyMA}
+library(plotly)
+g1 = ggplot(nd |> filter(effect=="Restrictive", effdate > ymd("1985-01-01"), state=="Massachusetts"), 
+   aes(x=effdate, text=paste(state,lawclass,changetype,wrap_hover(content)))) + geom_histogram(binwidth=365) +
+   ggtitle("Counts of restrictive legislative changes in Massachusetts after 1985")
+ggplotly(g1) |> plotly::style(hoverlabel = list(align = "left"))
+library(plotly)
+g1 = ggplot(nd |> filter(effect=="Permissive", effdate > ymd("1985-01-01"), state=="Massachusetts"), 
+   aes(x=effdate, text=paste(state,lawclass,changetype,wrap_hover(content)))) + geom_histogram(binwidth=365) +
+   ggtitle("Counts of permissive legislative changes in Massachusetts after 1985")
+ggplotly(g1) |> plotly::style(hoverlabel = list(align = "left"))
+```
 ## Michigan
 ## Minnesota
 ## Mississippi
