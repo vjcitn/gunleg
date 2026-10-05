@@ -170,6 +170,7 @@ ggplotly(g1) |> plotly::style(hoverlabel = list(align = "left"))
 ## Maryland
 
 ```{r}
+library(plotly)
 g1 = ggplot(nd |> filter(effect=="Restrictive", effdate > ymd("1985-01-01"), state=="Maryland"), 
    aes(x=effdate, text=paste(state,lawclass,changetype,wrap_hover(content)))) + geom_histogram(binwidth=365) +
    ggtitle("Counts of restrictive legislative changes in Maryland after 1985")
