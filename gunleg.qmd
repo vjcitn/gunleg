@@ -5,7 +5,7 @@ author: "BST 260 students"
 
 # Data acquisition
 
-Grab the gun legislation data (originally from [https://www.rand.org/pubs/tools/TLA243-2-v4.html](https://www.rand.org/pubs/tools/TLA243-2-v4.html)).
+Grab the gun legislation data (originally from <https://www.rand.org/pubs/tools/TLA243-2-v4.html>).
 
 ```{r getd,message=FALSE}
 library(readxl)
@@ -37,6 +37,7 @@ nd = lawdat |> rename( id=`Law ID`, state=State,
 ```
 
 Use lubridate to create `effdate`, a Date-valued column.
+
 ```{r dodate,message=FALSE}
 library(lubridate)
 nd = nd |> mutate(effdate=ymd(paste(effyear, effmonth, effday, sep="-")))
@@ -46,8 +47,7 @@ nd = nd |> mutate(effdate=ymd(paste(effyear, effmonth, effday, sep="-")))
 
 ## Static
 
-Visualize the big picture of counts of legislative
-events classified as Restrictive or Permissive after 1985.
+Visualize the big picture of counts of legislative events classified as Restrictive or Permissive after 1985.
 
 ```{r lkcounts,message=FALSE}
 library(ggplot2)
@@ -61,8 +61,7 @@ ggplot(nd |> filter(effect=="Permissive", effdate > ymd("1985-01-01")),
 
 ## Interactive
 
-Here we use plotly so that we can hover over elements
-of the plot to get more information.
+Here we use plotly so that we can hover over elements of the plot to get more information.
 
 ```{r doply,message=FALSE}
 library(plotly)
@@ -106,6 +105,7 @@ g1 = ggplot(nd |> filter(effect=="Permissive", effdate > ymd("1985-01-01"), stat
    ggtitle("Counts of permissive legislative changes in Alabama after 1985")
 ggplotly(g1) |> plotly::style(hoverlabel = list(align = "left"))
 ```
+
 ## Alaska
 
 ```{r doplyAK}
@@ -120,8 +120,11 @@ g1 = ggplot(nd |> filter(effect=="Permissive", effdate > ymd("1985-01-01"), stat
    ggtitle("Counts of permissive legislative changes in Alaska after 1985")
 ggplotly(g1) |> plotly::style(hoverlabel = list(align = "left"))
 ```
+
 ## Arizona
+
 ## Arkansas
+
 ## California
 
 ```{r doplyCA}
@@ -135,21 +138,37 @@ g1 = ggplot(nd |> filter(effect=="Permissive", effdate > ymd("1985-01-01"), stat
    ggtitle("Counts of permissive legislative changes in California after 1985")
 ggplotly(g1) |> plotly::style(hoverlabel = list(align = "left"))
 ```
+
 ## Colorado
+
 ## Connecticut
+
 ## Delaware
+
 ## Florida
+
 ## Georgia
+
 ## Hawaii
+
 ## Idaho
+
 ## Illinois
+
 ## Indiana
+
 ## Iowa
+
 ## Kansas
+
 ## Kentucky
+
 ## Louisiana
+
 ## Maine
+
 ## Maryland
+
 ```{r}
 g1 = ggplot(nd |> filter(effect=="Restrictive", effdate > ymd("1985-01-01"), state=="Maryland"), 
    aes(x=effdate, text=paste(state,lawclass,changetype,wrap_hover(content)))) + geom_histogram(binwidth=365) +
@@ -162,32 +181,61 @@ ggplotly(g1) |> plotly::style(hoverlabel = list(align = "left"))
 ```
 
 ## Massachusetts
+
 ## Michigan
+
 ## Minnesota
+
 ## Mississippi
+
 ## Missouri
+
 ## Montana
+
 ## Nebraska
+
 ## Nevada
+
 ## New Hampshire
+
 ## New Jersey
+
 ## New Mexico
+
 ## New York
+
 ## North Carolina
+
 ## North Dakota
+
 ## Ohio
+
 ## Oklahoma
+
 ## Oregon
+
 ## Pennsylvania
+
 ## Rhode Island
+
 ## South Carolina
+
 ## South Dakota
+
 ## Tennessee
+
 ## Texas
+
 ## Utah
+
 ## Vermont
+
 ## Virginia
+
 ## Washington
+
 ## West Virginia
+
 ## Wisconsin
+
 ## Wyoming
