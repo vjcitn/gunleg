@@ -1,9 +1,11 @@
 ---
 title: "Collaborative analysis of gun legislation time series"
-author: "BST 260 students"
+author: "Sejal Padmonkar"
 ---
 
 # Data acquisition
+
+## GEORGIA
 
 Grab the gun legislation data (originally from [https://www.rand.org/pubs/tools/TLA243-2-v4.html](https://www.rand.org/pubs/tools/TLA243-2-v4.html)).
 
@@ -101,9 +103,9 @@ wrap_hover <- function(x, width = 40, max_lines = Inf, sep = "<br>", escape = TR
 
 ```{r doplyAL}
 library(plotly)
-g1 = ggplot(nd |> filter(effect=="Permissive", effdate > ymd("1985-01-01"), state=="Alabama"), 
+g1 = ggplot(nd |> filter(effect=="Permissive", effdate > ymd("1985-01-01"), state=="Georgia"), 
    aes(x=effdate, text=paste(state,lawclass,wrap_hover(content)))) + geom_histogram(binwidth=365) +
-   ggtitle("Counts of permissive legislative changes in Alabama after 1985")
+   ggtitle("Counts of permissive legislative changes in Georgia after 1985")
 ggplotly(g1) |> plotly::style(hoverlabel = list(align = "left"))
 ```
 ## Alaska
