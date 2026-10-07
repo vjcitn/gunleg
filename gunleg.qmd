@@ -188,7 +188,25 @@ g1 = ggplot(nd |> filter(effect=="Permissive", effdate > ymd("1985-01-01"), stat
    ggtitle("Counts of permissive legislative changes in Connecticut after 1985")
 ggplotly(g1) |> plotly::style(hoverlabel = list(align = "left"))
 ```
+
 ## Delaware
+
+GitHub: bonaventurawill 
+Name: William Bonaventura
+
+```{r doplyDE}
+library(plotly)
+g1 = ggplot(nd |> filter(effect=="Restrictive", effdate > ymd("1985-01-01"), state=="Delaware"), 
+   aes(x=effdate, text=paste(state,lawclass,changetype,wrap_hover(content)))) + geom_histogram(binwidth=365) +
+   ggtitle("Counts of restrictive legislative changes in Arizona after 1985")
+ggplotly(g1) |> plotly::style(hoverlabel = list(align = "left"))
+g1 = ggplot(nd |> filter(effect=="Permissive", effdate > ymd("1985-01-01"), state=="Delaware"), 
+   aes(x=effdate, text=paste(state,lawclass,changetype,wrap_hover(content)))) + geom_histogram(binwidth=365) +
+   ggtitle("Counts of permissive legislative changes in Arizona after 1985")
+ggplotly(g1) |> plotly::style(hoverlabel = list(align = "left"))
+```
+
+
 
 ## Florida
 
