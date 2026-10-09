@@ -12,7 +12,7 @@ Grab the gun legislation data (originally from <https://www.rand.org/pubs/tools/
 if (!requireNamespace("readxl")) install.packages("readxl")
 library(readxl)
 if (!exists("lawdat")) {
-  download.file("https://tinyurl.com/randgunlaw", (tf <- tempfile()))
+  download.file("https://tinyurl.com/randgunlaw", (tf <- tempfile(fileext = ".xlsx")),mode = "wb")
   lawdat = read_xlsx(tf, 2)
 }
 ```
